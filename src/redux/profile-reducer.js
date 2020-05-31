@@ -1,17 +1,15 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST = "UPDATE-NEW-POST";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   posts: [
-    {id: 1, text: "Hi, how are you?", likesCount: 12},
-    {id: 2, text: "it is my first post", likesCount: 25},  // без этого обьекта мы получим undefined
+    { id: 1, text: "Hi, how are you?", likesCount: 12 },
+    { id: 2, text: "it is my first post", likesCount: 25 }, // без этого обьекта мы получим undefined
   ],
   textNewPost: "some another text",
-}
-//если вначале не передан state, а в начале redux не может его передать(у него его нет)
-//то параметром по умолчанию будет initialState(обьект), который будет инициализировать нашу подветку
-//этот одноразовый обьект будет начальным стейтом.
-// После диспатча наших екшнов стейт будет потом всегда будет приходить обновленный
+  profile: null,
+};
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,31 +17,38 @@ const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: 5,
         text: state.textNewPost,
-        likesCount: 4
+        likesCount: 4,
       };
       return {
         ...state,
         posts: [...state.posts, newPost],
-        textNewPost: ""
+        textNewPost: "",
       };
-
     }
     case UPDATE_NEW_POST: {
       return {
         ...state,
-        textNewPost: action.newText
-      }
-
+        textNewPost: action.newText,
+      };
     }
-    default:          //получает state и возвращает state если никакого action не нашлось
+    case SET_USER_PROFILE: {
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    }
+    default:
       return state;
-
   }
-}
-export const addPostActionCreator = () => ({type: ADD_POST})
+};
+export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (text) => ({
   type: UPDATE_NEW_POST,
-  newText: text
-})
+  newText: text,
+});
+export const setUserProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile,
+});
 
 export default profileReducer;

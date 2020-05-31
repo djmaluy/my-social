@@ -2,12 +2,14 @@ import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = () => { //функция, принимающая props(обьект) и возвращающая jsx разметку.
+const Profile = (props) => {
+  //функция, принимающая props(обьект) и возвращающая jsx разметку.
   return (
-      <div>
-        <ProfileInfo/>
-        <MyPostsContainer/>
-      </div>)
-}
+    <div>
+      <ProfileInfo profile={props.profile} />
+      <MyPostsContainer />
+    </div>
+  );
+};
 
 export default Profile;
