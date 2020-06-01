@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import { Route } from "react-router-dom";
 import News from "./components/News/News";
@@ -10,11 +9,12 @@ import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App() {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <div className="friends_name">
         <Navbar />
         {/*Route следит за URL в браузере и если совпадает то возвращает JSX определенной компоненты */}
