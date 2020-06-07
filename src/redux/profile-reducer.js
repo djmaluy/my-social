@@ -1,7 +1,6 @@
 import { usersAPI, profileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST = "UPDATE-NEW-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 
@@ -10,7 +9,6 @@ let initialState = {
     { id: 1, text: "Hi, how are you?", likesCount: 12 },
     { id: 2, text: "it is my first post", likesCount: 25 }, // без этого обьекта мы получим undefined
   ],
-  textNewPost: "some another text",
   profile: null,
   status: "",
 };
@@ -20,7 +18,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: 5,
-        text: state.textNewPost,
+        text: action.textNewPost,
         likesCount: 4,
       };
       return {
@@ -29,12 +27,7 @@ const profileReducer = (state = initialState, action) => {
         textNewPost: "",
       };
     }
-    case UPDATE_NEW_POST: {
-      return {
-        ...state,
-        textNewPost: action.newText,
-      };
-    }
+
     case SET_STATUS: {
       return {
         ...state,
@@ -51,11 +44,11 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 };
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (text) => ({
-  type: UPDATE_NEW_POST,
-  newText: text,
+export const addPostActionCreator = (textNewPost) => ({
+  type: ADD_POST,
+  textNewPost,
 });
+
 export const setStatus = (status) => ({
   type: SET_STATUS,
   status,
