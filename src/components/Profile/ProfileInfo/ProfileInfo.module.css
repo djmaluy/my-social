@@ -1,4 +1,9 @@
-
 .description {
-    padding: 10px;
+  padding: 10px;
+}
+
+.userPhoto {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
 }

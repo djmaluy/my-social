@@ -1,6 +1,7 @@
 import React from "react";
 import Paginator from "../Common/Paginator/Paginator";
 import User from "./User";
+import PaginationControlled from "../Common/Paginator/PaginatorTest";
 
 let Users = ({
   currentPage,
@@ -12,6 +13,7 @@ let Users = ({
 }) => {
   return (
     <div>
+      {/* <PaginationControlled /> */}
       <Paginator
         currentPage={currentPage}
         onPageChanged={onPageChanged}

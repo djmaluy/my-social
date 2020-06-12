@@ -42,9 +42,12 @@ class App extends Component {
         <div className="app-wrapper-content">
           <Route
             path="/profile/:userId?"
-            render={withSuspense(ProfileContainer)}
+            render={withSuspense(ProfileContainer)} // used ReactSuspense with HOC withSuspense
           />
-          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+          {/* once more variant to use ReactSuspense for lazy loading */}
+          <React.Suspense fallback={<div>Загрузка...</div>}>
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+          </React.Suspense>
           <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/login" render={() => <Login />} />
           <Route path="/news" component={News} />
