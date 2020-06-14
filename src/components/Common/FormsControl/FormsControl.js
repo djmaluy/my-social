@@ -14,7 +14,25 @@ export const Textarea = ({ input, meta: { touched, error }, ...props }) => {
   );
 };
 
+// export const Textarea = (props) => {
+//   const [input, ...restProps] = props;
+//   return (
+//     <formControl {...props}>
+//       <textarea {...input} {...restProps} />
+//     </formControl>
+//   );
+// };
+
 // https://redux-form.com/8.3.0/examples/fieldlevelvalidation/
+
+// export const Input = (props) => {
+//   const [input, ...restProps] = props;
+//   return (
+//     <formControl {...props}>
+//       <input {...input} {...restProps} />
+//     </formControl>
+//   );
+// };
 
 export const Input = ({ input, meta: { touched, error }, ...props }) => {
   const hasError = touched && error;
@@ -43,6 +61,6 @@ export const createField = (
       validate={validators}
       component={component}
       {...props}
-    />{" "}
+    />
   </div>
 );

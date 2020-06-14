@@ -3,7 +3,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
-  //функция, принимающая props(обьект) и возвращающая jsx разметку.
   return (
     <div>
       <ProfileInfo

@@ -4,9 +4,10 @@ import {
   Input,
   Textarea,
 } from "../../Common/FormsControl/FormsControl";
+import classes from "./ProfileInfo.module.css";
 import { reduxForm } from "redux-form";
 
-const ProfileDataForm = ({ handleSubmit }) => {
+const ProfileDataForm = ({ handleSubmit, profile }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -32,17 +33,18 @@ const ProfileDataForm = ({ handleSubmit }) => {
         <b>About me: </b>
         {createField("About me", "About me", [], Textarea)}
       </div>
-      {/* <div>
-        <b>Contacts: </b>{" "}
+      <div>
+        <b>Contacts: </b>
         {Object.keys(profile.contacts).map((key) => {
-          return(
-          <Contact
-            key={key}
-            contactTitle={key}
-            contactValue={profile.contacts[key]}
-          />)
+          return (
+            <div className={classes.contact}>
+              <b>
+                {key}: {createField("key", "contacts." + key, [], Input)}{" "}
+              </b>
+            </div>
+          );
         })}
-      </div> */}
+      </div>
     </form>
   );
 };
